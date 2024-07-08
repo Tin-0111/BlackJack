@@ -58,10 +58,14 @@
         .money {
             font-size: 18px;
         }
+        .score {
+            font-size: 20px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Blackjack Game with Betting</h1>
+    <h1>Blackjack</h1>
     <div id="game">
         <div class="money">
             Player's Money: $<span id="player-money">1000</span>
@@ -72,15 +76,17 @@
         <div class="hand" id="dealer-hand">
             <h2>Dealer's Hand</h2>
             <div class="cards" id="dealer-cards"></div>
+            <div class="score" id="dealer-score">Score: 0</div>
         </div>
         <div class="hand" id="player-hand">
             <h2>Player's Hand</h2>
             <div class="cards" id="player-cards"></div>
+            <div class="score" id="player-score">Score: 0</div>
         </div>
         <div class="controls">
             <button class="deal" onclick="deal()">Deal</button>
-            <button class="hit" onclick="hit()">Hit</button>
-            <button class="stand" onclick="stand()">Stand</button>
+            <button class="hit" onclick="hit()" disabled>Hit</button>
+            <button class="stand" onclick="stand()" disabled>Stand</button>
         </div>
     </div>
     <script>
@@ -94,7 +100,7 @@
             deck = [];
             for (let suit of suits) {
                 for (let value of values) {
-                    deck.push({suit, value});
+                    deck.push({ suit, value });
                 }
             }
         }
@@ -206,6 +212,9 @@
                 cardDiv.innerText = `${card.value}${card.suit}`;
                 playerCardsDiv.appendChild(cardDiv);
             }
+
+            document.getElementById('dealer-score').innerText = `Score: ${getHandValue(dealerHand)}`;
+            document.getElementById('player-score').innerText = `Score: ${getHandValue(playerHand)}`;
         }
 
         function disableControls() {
