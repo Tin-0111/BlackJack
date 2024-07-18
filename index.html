@@ -71,7 +71,7 @@
             Player's Money: $<span id="player-money">1000</span>
         </div>
         <div class="betting">
-            <input type="number" id="bet-amount" placeholder="Enter bet amount" min="1" />
+            <input type="number" id="bet-amount" placeholder="베팅 값을 입력하세요." min="1" />
         </div>
         <div class="hand" id="dealer-hand">
             <h2>Dealer's Hand</h2>
@@ -169,7 +169,7 @@
 
         function checkForBust() {
             if (getHandValue(playerHand) > 21) {
-                alert("Player busts! Dealer wins.");
+                alert("플레이어 버스트! 딜러 승리.");
                 disableControls();
             }
         }
