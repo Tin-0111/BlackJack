@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack Game with Betting</title>
+    <title>Blackjack</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +65,7 @@
     </style>
 </head>
 <body>
-    <h1>Blackjack Game with Betting</h1>
+    <h1>♣️♦️BLACKJACK♥️♠️</h1>
     <div id="game">
         <div class="money">
             Player's Money: $<span id="player-money">1000</span>
@@ -115,7 +115,7 @@
         function deal() {
             const betAmount = parseInt(document.getElementById('bet-amount').value);
             if (isNaN(betAmount) || betAmount < 1 || betAmount > playerMoney) {
-                alert('Please enter a valid bet amount within your available money.');
+                alert('유효한 값을 베팅해주세요.');
                 return;
             }
 
@@ -179,13 +179,13 @@
             const dealerValue = getHandValue(dealerHand);
 
             if (dealerValue > 21 || playerValue > dealerValue) {
-                alert("Player wins!");
+                alert("플레이어 승리!");
                 playerMoney += currentBet * 2;
             } else if (playerValue === dealerValue) {
-                alert("Push!");
+                alert("동점");
                 playerMoney += currentBet;
             } else {
-                alert("Dealer wins!");
+                alert("딜러 승리!");
             }
             currentBet = 0;
             updatePlayerMoney();
